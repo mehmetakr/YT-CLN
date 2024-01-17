@@ -3,21 +3,20 @@ import SideBar from "../components/SideBar";
 import { YoutubeContext } from "../context/YoutubeContext";
 import VideoCard from "../components/VideoCard";
 import Loader from "../components/Loader";
-const Feed = () => {
-  const { video } = useContext(YoutubeContext);
 
-  console.log("dsgfdhfdgd", video);
+const Feed = () => {
+  const { videos } = useContext(YoutubeContext);
+
   return (
-    <div className="flex gap-10">
+    <div className="flex ">
       <SideBar />
       <div className="video-layout">
-        {/* EĞER APİDEN HENÜZ CEVAP GELMEDİYSE YÜKLENİYOR YAZISI BASTIRIR GELİRSEDE EKRANA VİDEOLARI BASTIRIR */}
-        {!video ? (
+        {!videos ? (
           <Loader />
         ) : (
-          video.map(
+          videos.map(
             (item, i) =>
-              item.type === "video" && <VideoCard video={item} key={i} />
+              item.type === "video" && <VideoCard key={i} video={item} />
           )
         )}
       </div>

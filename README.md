@@ -26,4 +26,3 @@
 - ürünlerid=56
 
 * bu parametrelerde `usesearchparams` kullanılır
-# YT-CLN

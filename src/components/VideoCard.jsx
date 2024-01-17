@@ -1,44 +1,50 @@
 import millify from "millify";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const VideoCard = ({ video }) => {
+
+const VideoCard = ({ video, isRow }) => {
   const navigate = useNavigate();
-  const [isHover, setishover] = useState(false);
-  console.log(isHover);
+  const [isHover, setIsHover] = useState(false);
+  //console.log(video.richThumbnail);
   return (
     <div
-      onMouseEnter={() => setishover(true)}
-      onMouseLeave={() => setishover(false)}
-      onClick={() => navigate(`/watch?y=${video.videoId}`)}
-      className="cursor-pointer"
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      onClick={() => navigate(`/watch?v=${video.videoId}`)}
+      className={`cursor-pointer ${isRow && "flex gap-2 items-center"}`}
     >
-      {/* Fotograf kısmı */}
+      {/* Forograf kısmı  */}
       <div>
         <img
           src={
-            isHover
-              ? video.richThumbnail[video.richThumbnail.length - 1].url
-              : video.thumbnail[video.thumbnail.length - 1].url
+            isHover && video.richThumbnail
+              ? video.richThumbnail[video.richThumbnail?.length - 1].url
+              : video.thumbnail[video.thumbnail?.length - 1].url
           }
-          className="rounded-lg w-full h-full"
+          className={`max-w-none rounded-lg w-full ${isRow && "w-40 h-20"}`}
         />
       </div>
-      {/* alt detay alanları (video ismi , kanal adı fotograf ) */}
       <div className="flex gap-4 mt-5">
         <img
-          className="rounded-[50%] w-14 h-14"
           src={
             video.channelThumbnail
               ? video.channelThumbnail[0]?.url
-              : "./default.png"
+              : "/default.png"
           }
+          className={`w-14 h-14 rounded-full  ${isRow && "hidden"}`}
         />
-        <div className="">
-          <h4 className="font-bold"> {video.title} </h4>
-          <p> {video.channelTitle}</p>
-          <div className="flex gap-4">
-            <p>{millify(video.viewCount)} görüntülenme </p>
-            <p>{video.publishedTimeText}</p>
+        <div className="text-[#aaa]">
+          <h4 className={`font-bold text-black ${isRow && "line-clamp-1"}`}>
+            {video.title}
+          </h4>
+          <p className="text-black">{video.channelTitle}</p>
+          <div className={`flex gap-2 ${isRow && "text-sm gap-1"}`}>
+            <p className="line-clamp-1 whitespace-nowrap text-black">
+              {millify(video.viewCount)} görüntülenme
+            </p>
+            <p className="whitespace-nowrap text-black">
+              {video.publishedTimeText}
+            </p>
           </div>
         </div>
       </div>

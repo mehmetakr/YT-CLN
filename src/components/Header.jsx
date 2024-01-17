@@ -5,7 +5,7 @@ import { AiFillBell, AiFillVideoCamera } from "react-icons/ai";
 const Header = () => {
   return (
     <header className="flex justify-between items-center p-4">
-      <Link to={() => Navigate("/")} className="flex items-center gap-[10px]">
+      <Link to={"/"} className="flex items-center gap-[10px]">
         <img className="w-[50px]" src="/youtube.png" />
         <h1 className="text-red-500 text-2xl max-sm:hidden">Youtube</h1>
       </Link>

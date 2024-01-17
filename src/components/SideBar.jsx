@@ -3,7 +3,7 @@ import { categories } from "../constants";
 import { YoutubeProvider } from "../context/YoutubeContext";
 import { YoutubeContext } from "../context/YoutubeContext";
 const SideBar = () => {
-  const { selectedcategory, setselectedcategory } = useContext(YoutubeContext);
+  const { selectedCategory, setSelectedCategory } = useContext(YoutubeContext);
 
   //  console.log(selectedcategory, setselectedcategory);
   return (
@@ -11,9 +11,9 @@ const SideBar = () => {
       {categories.map((item, i) => (
         <div key={i}>
           <div
-            onClick={() => setselectedcategory(item)}
+            onClick={() => setSelectedCategory(item)}
             className={`${
-              item.name === selectedcategory?.name && "bg-[#2d2d2d]"
+              item.name === selectedCategory?.name && "bg-[#2d2d2d]"
             }  flex items-center  text-black gap-2 py-4 px-2 md:px-3 text-md md:text-lg cursor-pointer rounded-md transition duration-300 hover:bg-[#2d2d2d] hover:text-white `}
           >
             <span className="max-sm:text-2xl">{item.icon}</span>
