@@ -1,15 +1,27 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { AiFillBell, AiFillVideoCamera } from "react-icons/ai";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const handlesubmit = (e) => {
+    e.preventDefault();
+
+    const text = e.target[0].value;
+
+    navigate(`/results?search_query=${text}`);
+  };
+
   return (
     <header className="flex justify-between items-center p-4">
       <Link to={"/"} className="flex items-center gap-[10px]">
         <img className="w-[50px]" src="/youtube.png" />
         <h1 className="text-red-500 text-2xl max-sm:hidden">Youtube</h1>
       </Link>
-      <form className="flex items-center border border-gray-400 rounded-[20px]  ">
+      <form
+        onSubmit={handlesubmit}
+        className="flex items-center border border-gray-400 rounded-[20px]  "
+      >
         <input
           className="bg-black text-white text-lg outline-none rounded-[20px] px-3 py-1 "
           type="text"

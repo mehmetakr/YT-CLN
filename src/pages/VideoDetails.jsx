@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import { AiFillDislike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
+import VideoCard from "../components/VideoCard";
+
 import { getData } from "../utils/getData";
 import millify from "millify";
 import StringArea from "../components/StringArea";
@@ -11,10 +13,10 @@ const VideoDetails = () => {
   const [video, setvideo] = useState(null);
   // 1-) url'den arama parametresini al
 
-  const [searchparams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   // bu sayede tıkladıgımız videonun id sine ulaşmiş olduk
-  const id = searchparams.get("v");
+  const id = searchParams.get("v");
 
   // id sini bildigimiz video için api isteği at
 
@@ -25,7 +27,7 @@ const VideoDetails = () => {
         console.log(data, "dgfdhgfhfdgsd");
       })
       .catch((err) => {});
-  }, []);
+  }, [searchParams]);
   // console.log(id);
 
   return (
@@ -88,12 +90,13 @@ const VideoDetails = () => {
           )}
         </>
       </div>
-      <div className="border">
+      <div className="flex flex-col gap-5 m-9 p-2">
         {!video ? (
           <Loader />
         ) : (
           video.relatedVideos.data.map(
-            (item) => item.type === "video" && <VideoCard video={item} />
+            (item) =>
+              item.type === "video" && <VideoCard isRow={true} video={item} />
           )
         )}
       </div>
