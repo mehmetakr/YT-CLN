@@ -1,3 +1,5 @@
+# Yotube Clone Projesi
+
 # Kaynkalar
 
 - APİ : https://rapidapi.com/ytjar/api/yt-api
@@ -12,16 +14,19 @@
 - react-player
 - tailwind (kurulum sitesinden )
 
+<h1>Proje Gif</h1>
+
+<img src="ytgif.gif">
+
       <!-- Notlar -->
 
 1.  YOL Paramtresi (path params)
 
-
-    -  ürünler/56
+    - ürünler/56
 
 - Bu tarz yol parametrlerine erişmek için `useparams` kullanıyoruz
 
-2.  Arama paramtresi (Querry Params
+2.  Arama paramtresi (Querry Params)
 
 - ürünlerid=56
 

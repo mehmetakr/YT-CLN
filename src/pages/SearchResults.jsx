@@ -22,6 +22,7 @@ const Searchresults = () => {
       <SideBar />
       <div className="flex justify-center p-4 flex-1 h-screen overflow-auto">
         <div className="flex flex-col max-w-lg gap-10 items-center">
+            <p className="text-lg"><span className="font-bold">{query}</span> için  sonuclar </p>
           {!results ? (
             <Loader />
           ) : (
